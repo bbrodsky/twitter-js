@@ -1,5 +1,6 @@
 var express = require( 'express' );
-const volleyball = require('volleyball')
+const volleyball = require('volleyball');
+var nunjucks = require('nunjucks');
 
 
 
@@ -23,3 +24,58 @@ app.get('/', function(req, res, next) {
 app.listen(3000, function(){
   console.log("server listening!");
 });
+
+
+var locals = {
+	title: 'An Example',
+	people: [
+		{ name: 'Gandalf' },
+		{ name: 'Frodo' },
+		{ name: 'Hermione' }
+	]
+};
+nunjucks.configure('views', { noCache: true });
+nunjucks.render('index.html', locals, function (err, ouput) {
+	console.log(output);
+});
+
+nunjucks.configure('views');
+app.set('view engine', 'html');
+app.engine('html', nunjucks.render);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
