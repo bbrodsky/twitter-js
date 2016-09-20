@@ -14,7 +14,11 @@ function find (properties) {
 	return _.cloneDeep(_.filter(data, properties));
 }
 
-module.exports = { add: add, list: list, find: find};
+function latestTweet () {
+  return _.cloneDeep(data[data.length-1]);
+}
+
+module.exports = { add: add, list: list, find: find, latestTweet: latestTweet};
 
 
 var randArrayEl = function(arr) {
