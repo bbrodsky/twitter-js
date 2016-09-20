@@ -18,7 +18,9 @@ app.use(volleyball);
 
 app.get('/', function(req, res, next) {
   // res.set('Content-Type', 'text/plain');
-  res.send('Hello world!');
+  var people = [{name: "Full"}, {name: "Stacker"}, {name: "son"}];
+  res.render('index', {title: "Hall of Fame", people: people});
+  
 });
 
 app.listen(3000, function(){
@@ -35,13 +37,15 @@ var locals = {
 	]
 };
 nunjucks.configure('views', { noCache: true });
-nunjucks.render('index.html', locals, function (err, ouput) {
+nunjucks.render('index.html', locals, function (err, output) {
 	console.log(output);
 });
 
 nunjucks.configure('views');
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
+
+
 
 
 
